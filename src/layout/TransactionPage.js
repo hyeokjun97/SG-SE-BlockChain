@@ -110,7 +110,7 @@ function DashboardContent() {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            코인 전송 내역
+                            트랜잭션 조회
                         </Typography>
 
                     </Toolbar>

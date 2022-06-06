@@ -107,7 +107,7 @@ function DashboardContent() {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            코인 지갑
+                            대시보드
                         </Typography>
 
                     </Toolbar>

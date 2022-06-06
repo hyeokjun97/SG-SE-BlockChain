@@ -39,14 +39,14 @@ export default function SiteMenu(){
             </ListItemButton>
         </Link>
 
-        <Link to={'/token'} >
-            <ListItemButton>
-                <ListItemIcon>
-                    <LayersIcon/>
-                </ListItemIcon>
-                <ListItemText primary="토큰 추가 및 발행"/>
-            </ListItemButton>
-        </Link>
+        {/*<Link to={'/token'} >*/}
+        {/*    <ListItemButton>*/}
+        {/*        <ListItemIcon>*/}
+        {/*            <LayersIcon/>*/}
+        {/*        </ListItemIcon>*/}
+        {/*        <ListItemText primary="토큰 추가 및 발행"/>*/}
+        {/*    </ListItemButton>*/}
+        {/*</Link>*/}
 
             <ListItemButton onClick={()=>{
                 alert("로그아웃 진행 -> src/layout/SiteMenu.js 51번줄 수정해주세여");
