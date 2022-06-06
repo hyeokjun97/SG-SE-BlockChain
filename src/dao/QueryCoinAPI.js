@@ -25,4 +25,8 @@ export default class QueryCoinAPI {
     // TODO: 여기서 코인을 deploy하는 로직을 만든다.
     coinController.deploy(web3, name, symbol, total_supply);
   }
+
+  checkCustomToken(){
+    
+  }
 }

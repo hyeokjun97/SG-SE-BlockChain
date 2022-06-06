@@ -123,7 +123,7 @@ function DashboardContent() {
                         >
                             대시보드
                         </Typography>
-
+                    <div>{QueryCoinAPI.instance.getCoinList()}</div>
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
