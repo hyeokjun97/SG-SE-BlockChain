@@ -23,7 +23,7 @@ import Copyright from "../component/Copyright";
 import { login, makeAccount } from "../dao/controller/login";
 import LoginAPI from "../dao/LoginAPI";
 import * as userData from "../dao/data/user";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 const theme = createTheme();
 
@@ -36,9 +36,11 @@ function SignInSide() {
   const [user, setUser] = React.useState({});
 
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  console.log("SignInSide location", location);
+
+  const signupSubmit = (event) => {
     const data = new FormData(event.currentTarget);
     const password1 = data.get("password_1");
     const password2 = data.get("password_2");
@@ -57,6 +59,24 @@ function SignInSide() {
     setMnemonicSet(remainUser.data.mnemonic_set.split(" "));
   };
 
+  const loginSubmit = (event) => {
+    const data = new FormData(event.currentTarget);
+    const password1 = data.get("password_1");
+    if (password1 !== location.state?.user.password) {
+      return alert("비밀번호가 일치하지 않습니다.");
+    }
+    setMnemonicSet(location.state?.user.mnemonic_set.split(" "));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (location.state?.isLogin) {
+      loginSubmit(event);
+    } else {
+      signupSubmit(event);
+    }
+  };
+
   const onClickWord = (item) => {
     setInputMnemonicSet([...inputMnemonicSet, item]);
     const newMneSet = mnemonicSet.filter((e) => e != item);
@@ -70,13 +90,20 @@ function SignInSide() {
   };
 
   const onClickSignup = () => {
-    for (let i = 0; i < mnemonicSet.length; i++) {
-      if (mnemonicSet != inputMnemonicSet) {
+    const checkSet = location.state?.isLogin
+      ? location.state?.user.mnemonic_set.split(" ")
+      : user.mnemonic_set.split(" ");
+    for (let i = 0; i < checkSet.length; i++) {
+      if (checkSet[i] != inputMnemonicSet[i]) {
         return alert("비밀복구단어가 일치하지 않습니다.");
       }
     }
-    userData.add({ ...user, password: password });
-    userData.postCurrentUser({ ...user, password: password });
+    if (location.state?.isLogin) {
+      userData.postCurrentUser(location.state?.user);
+    } else {
+      userData.add({ ...user, password: password });
+      userData.postCurrentUser({ ...user, password: password });
+    }
     navigate("/main");
   };
 
@@ -141,26 +168,30 @@ function SignInSide() {
                 autoComplete="current-password"
               />
 
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password_2"
-                label="비밀번호 확인"
-                type="password"
-                id="password_2"
-                autoComplete="current-password"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                계정 생성
-              </Button>
+              {!location.state?.isLogin && (
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password_2"
+                  label="비밀번호 확인"
+                  type="password"
+                  id="password_2"
+                  autoComplete="current-password"
+                />
+              )}
+              {mnemonicSet.length == 0 && inputMnemonicSet.length == 0 && (
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  {location.state?.isLogin ? "로그인" : "계정 생성"}
+                </Button>
+              )}
 
-              {mnemonicSet.length > 0 && (
+              {(mnemonicSet.length > 0 || inputMnemonicSet.length > 0) && (
                 <Accordion expanded={mnemonicSet.length > 0}>
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -190,6 +221,7 @@ function SignInSide() {
                   </AccordionDetails>
                 </Accordion>
               )}
+              <div style={{ height: 16 }} />
               {inputMnemonicSet.map((word) => {
                 return (
                   <Button
@@ -212,7 +244,7 @@ function SignInSide() {
                   onClick={onClickSignup}
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  계정 생성
+                  {location.state?.isLogin ? "로그인" : "계정 생성"}
                 </Button>
               )}
               <Copyright sx={{ mt: 5 }} />
