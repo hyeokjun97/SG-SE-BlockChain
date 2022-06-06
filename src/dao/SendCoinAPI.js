@@ -16,6 +16,6 @@ export default class SendCoinAPI {
   //
 
   sendCoin(cont_addr, target_addr, value) {
-    sendController.send(web3, cont_addr, target_addr, value);
+    return sendController.send(web3, cont_addr, target_addr, value);
   }
 }
