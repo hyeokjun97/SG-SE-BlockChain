@@ -18,6 +18,7 @@ const Root = () => {
     const tokens = tokenData.get();
     const transactions = transactionData.get();
     const user = userData.getAll();
+
     if (!tokens.status || typeof tokens.data != "object") {
       Local.set("token", init);
     }

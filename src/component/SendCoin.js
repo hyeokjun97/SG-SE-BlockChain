@@ -10,6 +10,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import SendCoinAPI from '../dao/SendCoinAPI.js';
+import * as tokenData from '../dao/data/token'
+import * as userData from '../dao/data/user'
 
 function preventDefault(event) {
     event.preventDefault();
@@ -20,11 +23,28 @@ export default function SendCoin({onSend}) {
     const [token, setToken] = React.useState('syc');
     const [address, setAddress] = React.useState(null);
     const [amount, setAmount] = React.useState(null);
+    const [tokenList, setTokenList] = React.useState([])
+    let node1Address = ""
 
-    const sendCoin = () => {
+    const getTokenList  = () => {
+      const user = userData.getCurrentUser()
+      const tokens = tokenData.getByUserAddr(user.data.address)
+      console.log('asdfasdf',tokens)
+      setTokenList(tokens.data)
+    }
+
+    const sendCoin = async () => {
         //TODO 실제 전송
+        // alert('little sendcoin');
+        console.log(token)
+        await SendCoinAPI.instance.sendCoin(token.cont_addr, address, parseInt(amount));
+
         onSend(token, address, amount);
     };
+
+    React.useEffect(()=>{
+      getTokenList()
+    },[])
 
     return (
         <React.Fragment>
@@ -35,13 +55,14 @@ export default function SendCoin({onSend}) {
                 <Select
                     labelId="demo-simple-select-label"
                     id="token"
-                    value={'syc'}
                     label="Token"
                     onChange={(event)=>{
                         setToken(event.target.value);
                     }}
                 >
-                    <MenuItem value={'syc'}>SYC</MenuItem>
+                {tokenList.map(e => {
+                  return <MenuItem value={e}>{e.token_name}</MenuItem>
+                })}
                 </Select>
             </FormControl>
 
@@ -64,7 +85,7 @@ export default function SendCoin({onSend}) {
                 required
                 fullWidth
                 name="amount"
-                label={`수량 (Amount/${token.toUpperCase()})`}
+                label={`수량 (Amount/${token.token_symbol})})`}
                 type="number"
                 id="amount"
                 autoComplete="amount"
@@ -78,6 +99,7 @@ export default function SendCoin({onSend}) {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 onClick={()=>{
+                    alert('onclick');
                     sendCoin();
                 }}
             >
