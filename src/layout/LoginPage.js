@@ -50,7 +50,7 @@ function SignInSide() {
     console.log("asdf");
     const remainUser = userData.getRemainNode();
     console.log(remainUser);
-    setUser(remainUser);
+    setUser(remainUser.data);
     alert("잘 저장하세요~");
     alert(remainUser.data.mnemonic_set);
     console.log(remainUser.data.mnemonic_set.split(" "));
