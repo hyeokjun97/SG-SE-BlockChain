@@ -17,6 +17,10 @@ export default class QueryCoinAPI {
     coinController.getAll(web3);
   }
 
+  getBalance (address) {
+    return coinController.getBalance(web3,address);
+  }
+
   deployToken(name, symbol, total_supply) {
     // TODO: 여기서 코인을 deploy하는 로직을 만든다.
     coinController.deploy(web3, name, symbol, total_supply);

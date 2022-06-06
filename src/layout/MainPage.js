@@ -23,6 +23,8 @@ import BalanceView from '../component/BalanceView';
 import BalanceList from '../component/BalanceList';
 import Copyright from "../component/Copyright";
 
+import QueryCoinAPI from '../dao/QueryCoinAPI';
+
 
 const drawerWidth = 240;
 
@@ -74,9 +76,21 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
     const [open, setOpen] = React.useState(true);
+
+    const [balance, setBalance] = React.useState();
+
     const toggleDrawer = () => {
         setOpen(!open);
     };
+
+    const getBalance = async (user_addr) => {
+        const res = await QueryCoinAPI.instance.getBalance(user_addr);
+        setBalance(res)
+    }
+
+    React.useEffect(() => {
+        getBalance('0x307406876e70F5ebcf92f7d4Cb97D1Fb6892EAA5');
+    }, [])
 
     return (
         <ThemeProvider theme={mdTheme}>
@@ -156,12 +170,14 @@ function DashboardContent() {
                                     }}
                                 >
                                     <BalanceView/>
+                                    <div>{balance}</div>
                                 </Paper>
                             </Grid>
                             {/* Recent BalanceList */}
                             <Grid item xs={12} md={8} lg={9}>
                                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                                     <BalanceList />
+                                    <div></div>
                                 </Paper>
                             </Grid>
                         </Grid>
@@ -169,6 +185,7 @@ function DashboardContent() {
                     </Container>
                 </Box>
             </Box>
+
         </ThemeProvider>
     );
 }
