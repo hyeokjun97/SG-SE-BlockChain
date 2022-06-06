@@ -107,3 +107,19 @@ export const getByAddr = (addr) => {
     return { data: "get user by addr error", status: false };
   }
 };
+
+// 현재 로그인 한 유저 가져오기
+export const getCurrentUser = () => {
+  const user = Local.get("current_user");
+  if (user) {
+    return { data: user, status: true };
+  } else {
+    return { data: "로그인된 유저가 없습니다.", status: false };
+  }
+};
+
+// 로그인시 현재 로그인한 유저 정보를 저장한다.
+export const postCurrentUser = (user) => {
+  Local.set("current_user", user);
+  return { data: user, status: true };
+};
