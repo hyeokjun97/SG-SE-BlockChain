@@ -1,13 +1,13 @@
 root 폴더에 있는 각 \*API.js들
 각각 usecase별로 logic을 wrap하는 class
+실제 외부에서 호출되는 부분이다.
 
 controller폴더
-각각의 usecase별로 실제 logc을 담당하는 부분
+각각의 usecase별로 실제 logc을 담당하는 부분이다.
 
 data폴더
 local database에 접근하는 부분 database는 file에 json형식으로 저장되어있음
-각각 js별로 add, delete, get이 있음
-user는 static으로 저장되므로 getAll()과 getByAddr()만 있음
+각각 get, add, getAll()등의 필요한 함수가 정의되어있고 필요한게 있으면 차상원에게 말해주세요
 
 helper폴더
 web3Helper.js web3를 설정해서 가져오기 위해 여기서 host등의 값을 변경해주면 모두 적용

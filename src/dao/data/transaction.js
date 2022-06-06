@@ -19,7 +19,7 @@ export const get = () => {
   if (response) {
     return { data: response, status: true };
   } else {
-    return { data: [], status: true };
+    return { data: [], status: false };
   }
 };
 export const getByContractAddr = (cont_addr) => {
