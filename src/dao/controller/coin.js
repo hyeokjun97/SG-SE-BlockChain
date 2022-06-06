@@ -219,7 +219,7 @@ export const getBalance = async (web3,address)=>{
 }
 
 export const checkCustomTokenAddress = (customTokenAddress, userAddress) =>{
-
+  
 }
 const addCustomToken = (customTokenAddress, userAddress) => {
 
