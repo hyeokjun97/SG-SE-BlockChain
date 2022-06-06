@@ -22,6 +22,7 @@ import SiteMenu from './SiteMenu';
 import BalanceView from '../component/BalanceView';
 import BalanceList from '../component/BalanceList';
 import Copyright from "../component/Copyright";
+import SendCoin from "../component/SendCoin";
 
 
 const drawerWidth = 240;
@@ -107,7 +108,7 @@ function DashboardContent() {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            코인 지갑
+                            코인 전송
                         </Typography>
 
                     </Toolbar>
@@ -165,7 +166,9 @@ function DashboardContent() {
                             {/* Recent BalanceList */}
                             <Grid item xs={12} md={8} lg={9}>
                                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                                    <BalanceList />
+                                    <SendCoin onSend={(token, address, amount)=>{
+
+                                    }} />
                                 </Paper>
                             </Grid>
                         </Grid>
@@ -177,6 +180,6 @@ function DashboardContent() {
     );
 }
 
-export default function MainPage() {
+export default function CoinPage() {
     return <DashboardContent />;
 }

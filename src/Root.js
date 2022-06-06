@@ -7,6 +7,7 @@ import * as transactionData from "./dao/data/transaction";
 import * as userData from "./dao/data/user";
 import Local from "./dao/Local";
 import MainPage from "./layout/MainPage";
+import CoinPage from "./layout/CoinPage";
 
 
 const Root = () => {
@@ -38,7 +39,7 @@ const Root = () => {
         <Route path="/" element={<EntryPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="main" element={<MainPage/>} />
-        <Route path="coin" element={<MainPage/>} />
+        <Route path="coin" element={<CoinPage/>} />
         <Route path="transactions" element={<MainPage/>} />
         <Route path="token" element={<MainPage/>} />
       </Routes>
