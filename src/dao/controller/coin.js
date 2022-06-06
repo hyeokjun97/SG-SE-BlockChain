@@ -194,6 +194,8 @@ export const deploy = (web3, name, symbol, total_supply) => {
       //console.log(contractAddress);
       tokenData.add({
         cont_addr: contractAddress,
+        token_name: name,
+        token_symbol: symbol, 
         user_addr: userAddress
       })
     })
@@ -218,8 +220,9 @@ export const getBalance = async (web3,address)=>{
   // })
 }
 
-export const checkCustomTokenAddress = (customTokenAddress, userAddress) =>{
-  
+export const checkCustomTokenAddress = (customTokenAddress) =>{
+  let userAdderss = userData.getCurrentUser().data.address;
+
 }
 const addCustomToken = (customTokenAddress, userAddress) => {
 

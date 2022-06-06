@@ -26,7 +26,7 @@ export default class QueryCoinAPI {
     coinController.deploy(web3, name, symbol, total_supply);
   }
 
-  checkCustomToken(){
-  
+  checkCustomToken(customTokenAddress){
+    //checkCustomTokenAddress(customTokenAddress);
   }
 }

@@ -1,6 +1,6 @@
 import Local from "../Local";
 
-const token = [{ cont_addr: "", user_addr: "" }];
+const token = [{ cont_addr: "", token_name: "", token_symbol: "", user_addr: "" }];
 
 // token 정보를 추가한다.
 export const add = (item) => {
