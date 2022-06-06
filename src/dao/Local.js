@@ -4,7 +4,7 @@ export default class Local {
     return localStorage.setItem(key, JSON.stringify(value));
   };
 
-  static get = (key) => {
+  static get = (key, defaultValue=null) => {
     let response = localStorage.getItem(key);
     if (response) {
       try {
@@ -14,7 +14,7 @@ export default class Local {
         console.log("Local get error", e);
       }
     } else {
-      return null;
+      return defaultValue;
     }
   };
 }
