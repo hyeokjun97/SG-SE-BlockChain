@@ -6,8 +6,12 @@ import * as tokenData from "./dao/data/token";
 import * as transactionData from "./dao/data/transaction";
 import * as userData from "./dao/data/user";
 import Local from "./dao/Local";
+import MainPage from "./layout/MainPage";
+
 
 const Root = () => {
+
+
   const initALlData = () => {
     // init all data
     const init = [];
@@ -26,11 +30,17 @@ const Root = () => {
     initALlData();
   }, []);
 
+
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<EntryPage />} />
         <Route path="login" element={<LoginPage />} />
+        <Route path="main" element={<MainPage/>} />
+        <Route path="coin" element={<MainPage/>} />
+        <Route path="transactions" element={<MainPage/>} />
+        <Route path="token" element={<MainPage/>} />
       </Routes>
     </BrowserRouter>
   );
