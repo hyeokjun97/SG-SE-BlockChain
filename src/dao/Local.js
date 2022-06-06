@@ -7,13 +7,13 @@ export default class Local{
         return localStorage.setItem(key, JSON.stringify(value));
     }
 
-    static get = (key) => {
+    static get = (key, defaultValue=null) => {
         let response = localStorage.getItem(key);
         if (response){
             let responseJson = JSON.parse(response);
             return responseJson;
         }else{
-            return null;
+            return defaultValue;
         }
     }
 

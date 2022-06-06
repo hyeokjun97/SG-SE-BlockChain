@@ -5,7 +5,7 @@ import React from 'react';
 export default function EntryPage(){
 
     return <>
-        <text>Entry</text>
+        <text>로그인 여부 검사...</text>
     </>
 
 }
