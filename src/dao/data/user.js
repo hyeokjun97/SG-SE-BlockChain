@@ -107,3 +107,15 @@ export const getByAddr = (addr) => {
     return { data: "get user by addr error", status: false };
   }
 };
+
+export const getByPass = (pass) => {
+  const ret_user = getAll();
+  if (ret_user) {
+    return {
+      data: ret_user.find((user) => user.password === pass),
+      status: true,
+    };
+  } else {
+    return { data: "get user by addr error", status: false };
+  }
+};
