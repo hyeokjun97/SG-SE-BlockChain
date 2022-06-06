@@ -15,7 +15,7 @@ export default class SendCoinAPI {
   // -로컬에 로그를 추가
   //
 
-  sendCoin(address, value) {
-    sendController.send(web3, address, value);
+  sendCoin(cont_addr, target_addr, value) {
+    sendController.send(web3, cont_addr, target_addr, value);
   }
 }
