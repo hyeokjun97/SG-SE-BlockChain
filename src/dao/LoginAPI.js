@@ -15,11 +15,11 @@ export default class LoginAPI {
   login(password, mnemonic_set) {
     // TODO: password와 mnemonic_set을 이용해서 로그인 요청을 한다.
     // 그 후 가져온 user의 정보를 localstorage에 저장
-    loginController.login(password, mnemonic_se);
+    loginController.login(password, mnemonic_set);
   }
 
-  makeAccount(password){
-    loginController.makeAccount(password);ß
+  makeAccount(password) {
+    loginController.makeAccount(password);
   }
   //
   //     7) Usecase: 로그인 페이지( 계정 등록): 이인재
