@@ -67,7 +67,7 @@ export const getRemainNode = () => {
   const user_pool = Local.get("user_pool");
   console.log(data);
   if (data.length < 4) {
-    return { data: user_pool[data.length + 1], status: true };
+    return { data: user_pool[data.length], status: true };
   }
   return { data: "make user error", status: false };
 };
