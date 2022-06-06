@@ -9,7 +9,7 @@ const users_pool = [
   },
 ];
 
-export const InitUser = () => {
+export const InitUserPool = () => {
   Local.set("user_pool", users_pool);
 };
 

@@ -19,6 +19,7 @@ const Root = () => {
     if (!transactions.status) {
       Local.set("transaction", JSON.stringify(init));
     }
+    userData.InitUserPool();
   };
 
   React.useEffect(() => {
