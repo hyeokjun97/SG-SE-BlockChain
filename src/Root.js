@@ -17,11 +17,15 @@ const Root = () => {
     const init = [];
     const tokens = tokenData.get();
     const transactions = transactionData.get();
+    const user = userData.getAll();
     if (!tokens.status || typeof tokens.data != "object") {
       Local.set("token", init);
     }
     if (!transactions.status || typeof tokens.data != "object") {
       Local.set("transaction", init);
+    }
+    if (!user.status || typeof tokens.data != "object") {
+      Local.set("user", init);
     }
     console.log(tokenData.get());
     userData.InitUserPool();
