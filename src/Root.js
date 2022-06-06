@@ -11,21 +11,19 @@ import CoinPage from "./layout/CoinPage";
 import TransactionPage from "./layout/TransactionPage";
 import TokenPage from "./layout/TokenPage";
 
-
 const Root = () => {
-
-
   const initALlData = () => {
     // init all data
     const init = [];
     const tokens = tokenData.get();
     const transactions = transactionData.get();
-    if (!tokens.status) {
-      Local.set("token", JSON.stringify(init));
+    if (!tokens.status || typeof tokens.data != "object") {
+      Local.set("token", init);
     }
-    if (!transactions.status) {
-      Local.set("transaction", JSON.stringify(init));
+    if (!transactions.status || typeof tokens.data != "object") {
+      Local.set("transaction", init);
     }
+    console.log(tokenData.get());
     userData.InitUserPool();
   };
 
@@ -33,17 +31,15 @@ const Root = () => {
     initALlData();
   }, []);
 
-
-
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<EntryPage />} />
         <Route path="login" element={<LoginPage />} />
-        <Route path="main" element={<MainPage/>} />
-        <Route path="coin" element={<CoinPage/>} />
-        <Route path="transactions" element={<TransactionPage/>} />
-        <Route path="token" element={<TokenPage/>} />
+        <Route path="main" element={<MainPage />} />
+        <Route path="coin" element={<CoinPage />} />
+        <Route path="transactions" element={<TransactionPage />} />
+        <Route path="token" element={<TokenPage />} />
       </Routes>
     </BrowserRouter>
   );
