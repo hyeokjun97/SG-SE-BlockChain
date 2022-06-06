@@ -13,6 +13,19 @@ export const InitUserPool = () => {
   Local.set("user_pool", users_pool);
 };
 
+// 유저를 추가한다.
+export const add = (item) => {
+  const user = Local.get("user");
+  if (user) {
+    user.push(item);
+    Local.set("user", user);
+    return { message: "success", status: true };
+  } else {
+    return { message: "failed", status: false };
+  }
+};
+
+// 등록되어있는 모든 유저를 가져온다.
 export const getAll = () => {
   const response = Local.get("user");
   if (response) {
@@ -32,6 +45,7 @@ export const getRemainNode = () => {
   return { data: "make user error", status: false };
 };
 
+// address정보를 이용하여 유저를 가져온다.
 export const getByAddr = (addr) => {
   const ret_user = getAll();
   if (ret_user) {

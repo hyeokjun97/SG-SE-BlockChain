@@ -4,7 +4,7 @@ import * as tokenData from "../data/token";
 import * as transactionData from "../data/transaction";
 import * as userData from "../data/user";
 
-export const login = (addr, mneminic_set) => {
+export const login = (password, mneminic_set) => {
   // console.log(web3);
 };
 

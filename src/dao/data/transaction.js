@@ -3,6 +3,7 @@ import Local from "../Local";
 // dataTyoe
 const transaction = [{ hash: "", cont_addr: "" }];
 
+// transaction 정보를 추가한다.
 export const add = (item) => {
   const ret_transaction = Local.get("transaction");
   if (ret_transaction) {
@@ -14,6 +15,8 @@ export const add = (item) => {
   }
 };
 export const remove = () => {};
+
+// transaction 리스트를 모두 가져온다.
 export const get = () => {
   const response = Local.get("transaction");
   if (response) {
@@ -22,6 +25,8 @@ export const get = () => {
     return { data: [], status: false };
   }
 };
+
+// contract address를 이용해서 transaction 리스트를 가져온다.
 export const getByContractAddr = (cont_addr) => {
   const response = Local.get("transaction");
   if (response) {
