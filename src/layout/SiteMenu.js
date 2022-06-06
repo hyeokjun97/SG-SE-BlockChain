@@ -6,6 +6,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
+import LogoutIcon from '@mui/icons-material/Logout';
 import {Link} from "react-router-dom";
 
 export default function SiteMenu(){
@@ -46,6 +47,16 @@ export default function SiteMenu(){
                 <ListItemText primary="토큰 추가 및 발행"/>
             </ListItemButton>
         </Link>
+
+            <ListItemButton onClick={()=>{
+                alert("로그아웃 진행 -> src/layout/SiteMenu.js 51번줄 수정해주세여");
+            }}>
+                <ListItemIcon>
+                    <LogoutIcon/>
+                </ListItemIcon>
+                <ListItemText primary="로그아웃"/>
+            </ListItemButton>
+
 
     </React.Fragment>
 }

@@ -23,7 +23,7 @@ export default function SendCoin({onSend}) {
 
     const sendCoin = () => {
         //TODO 실제 전송
-        alert(token + ", " + address + ' => ' + amount);
+        onSend(token, address, amount);
     };
 
     return (

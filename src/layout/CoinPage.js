@@ -154,20 +154,16 @@ function DashboardContent() {
                                         p: 2,
                                         display: 'flex',
                                         flexDirection: 'column',
-                                        height: 240,
                                     }}
                                 >
-                                    <BalanceView
-                                        balance={301.45}
-                                        userName={'<현재사용자이름>'}
-                                    />
+                                    <BalanceView/>
                                 </Paper>
                             </Grid>
                             {/* Recent BalanceList */}
                             <Grid item xs={12} md={8} lg={9}>
                                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                                     <SendCoin onSend={(token, address, amount)=>{
-
+                                        alert(token + ", " + address + ' => ' + amount);
                                     }} />
                                 </Paper>
                             </Grid>

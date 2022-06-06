@@ -8,6 +8,8 @@ import * as userData from "./dao/data/user";
 import Local from "./dao/Local";
 import MainPage from "./layout/MainPage";
 import CoinPage from "./layout/CoinPage";
+import TransactionPage from "./layout/TransactionPage";
+import TokenPage from "./layout/TokenPage";
 
 
 const Root = () => {
@@ -40,8 +42,8 @@ const Root = () => {
         <Route path="login" element={<LoginPage />} />
         <Route path="main" element={<MainPage/>} />
         <Route path="coin" element={<CoinPage/>} />
-        <Route path="transactions" element={<MainPage/>} />
-        <Route path="token" element={<MainPage/>} />
+        <Route path="transactions" element={<TransactionPage/>} />
+        <Route path="token" element={<TokenPage/>} />
       </Routes>
     </BrowserRouter>
   );
