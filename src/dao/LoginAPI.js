@@ -18,6 +18,9 @@ export default class LoginAPI {
     loginController.login(password, mnemonic_se);
   }
 
+  makeAccount(password){
+    loginController.makeAccount(password);ß
+  }
   //
   //     7) Usecase: 로그인 페이지( 계정 등록): 이인재
   // - 계정 생성 (API를 이용하여 확장 가능)
