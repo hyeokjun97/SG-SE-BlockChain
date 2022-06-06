@@ -2,6 +2,7 @@ import Local from "../Local";
 
 const token = [{ cont_addr: "", user_addr: "" }];
 
+// token 정보를 추가한다.
 export const add = (item) => {
   const ret_token = Local.get("token");
   if (ret_token) {
@@ -13,6 +14,8 @@ export const add = (item) => {
   }
 };
 export const remove = () => {};
+
+// token 리스트를 모두 가져온다.
 export const get = () => {
   const response = Local.get("token");
   if (response) {
@@ -21,6 +24,8 @@ export const get = () => {
     return { data: "get token failed", status: false };
   }
 };
+
+// 유저가 등록한 token을 모두 가져온다.
 export const getByUserAddr = (user_addr) => {
   const response = Local.get("token");
   if (response) {
