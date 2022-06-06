@@ -22,6 +22,8 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Local from "../dao/Local";
 import Copyright from "../component/Copyright";
+import { login, makeAccount } from '../dao/controller/login';
+import LoginAPI from '../dao/LoginAPI';
 
 const theme = createTheme();
 
@@ -54,6 +56,7 @@ function SignInSide() {
         setOpenAccounts(true);
         setCount(count + 1);
         alert("mnemonic:" + mnemonic);
+        makeAccount(password1);
     };
 
     const createMnemonicSet = (password) => {

@@ -123,3 +123,15 @@ export const postCurrentUser = (user) => {
   Local.set("current_user", user);
   return { data: user, status: true };
 };
+
+export const getByPass = (pass) => {
+  const ret_user = getAll();
+  if (ret_user) {
+    return {
+      data: ret_user.find((user) => user.password === pass),
+      status: true,
+    };
+  } else {
+    return { data: "get user by addr error", status: false };
+  }
+};
