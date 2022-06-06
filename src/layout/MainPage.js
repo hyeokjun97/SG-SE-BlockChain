@@ -107,7 +107,7 @@ function DashboardContent() {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            코인 지갑
+                            대시보드
                         </Typography>
 
                     </Toolbar>
@@ -153,13 +153,9 @@ function DashboardContent() {
                                         p: 2,
                                         display: 'flex',
                                         flexDirection: 'column',
-                                        height: 240,
                                     }}
                                 >
-                                    <BalanceView
-                                        balance={301.45}
-                                        userName={'<현재사용자이름>'}
-                                    />
+                                    <BalanceView/>
                                 </Paper>
                             </Grid>
                             {/* Recent BalanceList */}
