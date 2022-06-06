@@ -13,6 +13,17 @@ export const InitUserPool = () => {
   Local.set("user_pool", users_pool);
 };
 
+export const add = (item) => {
+  const user = Local.get("user");
+  if (user) {
+    user.push(item);
+    Local.set("user", user);
+    return { message: "success", status: true };
+  } else {
+    return { message: "failed", status: false };
+  }
+};
+
 export const getAll = () => {
   const response = Local.get("user");
   if (response) {
