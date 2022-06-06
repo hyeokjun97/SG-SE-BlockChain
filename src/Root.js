@@ -12,12 +12,20 @@ import TransactionPage from "./layout/TransactionPage";
 import TokenPage from "./layout/TokenPage";
 
 const Root = () => {
+  const justInit = () => {
+    const init = [];
+    Local.set("token", init);
+    Local.set("transaction", init);
+    Local.set("user", init);
+    Local.set("current_user", init);
+  };
   const initALlData = () => {
     // init all data
     const init = [];
     const tokens = tokenData.get();
     const transactions = transactionData.get();
     const user = userData.getAll();
+    // justInit()
     if (!tokens.status || typeof tokens.data != "object") {
       Local.set("token", init);
     }

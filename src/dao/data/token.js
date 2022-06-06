@@ -30,7 +30,7 @@ export const getByUserAddr = (user_addr) => {
   const response = Local.get("token");
   if (response) {
     return {
-      data: response.find((token) => token.user_addr === user_addr),
+      data: response.filter((token) => token.user_addr === user_addr),
       status: true,
     };
   }
