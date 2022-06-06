@@ -34,6 +34,7 @@ export default function BalanceView() {
         amount: 0
     })
     const [openModal, setOpenModal] = React.useState(false);
+    const [addOpenModal, setAddOpenModal] = React.useState(false);
 
     // 모달에서 새로 추가할 토큰의 정보
     const [customTokenAddress, setCustomTokenAddress] = React.useState(null) 
@@ -67,9 +68,13 @@ export default function BalanceView() {
     }
     
     //
-    const checkCustomTokenAddress = () => {
+    const addCustomTokenAddress = () => {
         //let tokenList = get();
-        //console.log(tokenList)
+        //tokenAdded는 입력된 customTokenAddress가 존재하지 않거나, 이미 user가 가지고 있는 경우 false를 반환
+        //함수는 구현이 끝남, ui 구현 해야됨
+        //혹시나 error case를 나누고 싶으면 data/coin.js 의 addCustomTokenAddress()를 고쳐야함
+        let tokenAdded = QueryCoinAPI.instance.addCustomToken(customTokenAddress);
+        console.log(tokenAdded)
     }
     return (
         <React.Fragment>
@@ -95,7 +100,7 @@ export default function BalanceView() {
                     }
                 </Typography>
                 <Button onClick={()=>{
-                    setOpenModal(true);
+                    setAddOpenModal(true);
                 }}>토큰 추가</Button>
 
                 <Button onClick={()=>{
@@ -104,9 +109,9 @@ export default function BalanceView() {
 
             {/* token add*/}
             <Modal
-                open={openModal}
+                open={addOpenModal}
                 onClose={()=>{
-                    setOpenModal(false);
+                    setAddOpenModal(false);
                 }}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
@@ -133,11 +138,11 @@ export default function BalanceView() {
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                     onClick={()=>{
-                        checkCustomTokenAddress()
-                        setOpenModal(false)
+                        addCustomTokenAddress(customTokenAddress)
+                        setAddOpenModal(false)
                     }}
                 >
-                    발행하기
+                    추가하기
                 </Button>
             </Box>
             </Modal>

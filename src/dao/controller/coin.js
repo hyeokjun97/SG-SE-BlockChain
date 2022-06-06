@@ -220,10 +220,20 @@ export const getBalance = async (web3,address)=>{
   // })
 }
 
-export const checkCustomTokenAddress = (customTokenAddress) =>{
+export const addCustomTokenAddress = (customTokenAddress) =>{
   let userAdderss = userData.getCurrentUser().data.address;
-
-}
-const addCustomToken = (customTokenAddress, userAddress) => {
-
+  let tokenList = tokenData.get().data;
+  let CustomTokenToAdd;
+  console.log(tokenList)
+  //tokenList의 useraddress와 현재 user의 address를 비교, 
+  //없으면 return false;
+  //tokenList에 해당 constomTokenAddress가 없으면
+  if(tokenList.find(e => e.cont_addr == customTokenAddress && e.user_addr == userAdderss)){
+    return false;
+  }
+  CustomTokenToAdd = tokenList.find(e=> e.cont_addr == customTokenAddress)
+  console.log(CustomTokenToAdd)
+  //CustomTokenToAdd.user_addr = userAdderss
+  //tokenData.add(CustomTokenToAdd)
+  return true;
 }
