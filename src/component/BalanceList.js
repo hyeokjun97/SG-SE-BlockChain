@@ -41,8 +41,9 @@ export default function BalanceList({
         <TableHead>
           <TableRow>
             <TableCell>사용자</TableCell>
-            <TableCell align="right" onClick={onClickAdd}>
-              추가
+
+            <TableCell align="right">
+              <Button onClick={onClickAdd}>추가</Button>
             </TableCell>
           </TableRow>
         </TableHead>

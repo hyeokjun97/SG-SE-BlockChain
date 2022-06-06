@@ -62,15 +62,15 @@ function SignInSide() {
   const loginSubmit = (event) => {
     const data = new FormData(event.currentTarget);
     const password1 = data.get("password_1");
-    if (password1 !== location.state.user.password) {
+    if (password1 !== location.state?.user.password) {
       return alert("비밀번호가 일치하지 않습니다.");
     }
-    setMnemonicSet(location.state.user.mnemonic_set.split(" "));
+    setMnemonicSet(location.state?.user.mnemonic_set.split(" "));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (location.state.isLogin) {
+    if (location.state?.isLogin) {
       loginSubmit(event);
     } else {
       signupSubmit(event);
@@ -90,16 +90,16 @@ function SignInSide() {
   };
 
   const onClickSignup = () => {
-    const checkSet = location.state.isLogin
-      ? location.state.user.mnemonic_set.split(" ")
+    const checkSet = location.state?.isLogin
+      ? location.state?.user.mnemonic_set.split(" ")
       : user.mnemonic_set.split(" ");
     for (let i = 0; i < checkSet.length; i++) {
       if (checkSet[i] != inputMnemonicSet[i]) {
         return alert("비밀복구단어가 일치하지 않습니다.");
       }
     }
-    if (location.state.isLogin) {
-      userData.postCurrentUser(location.state.user);
+    if (location.state?.isLogin) {
+      userData.postCurrentUser(location.state?.user);
     } else {
       userData.add({ ...user, password: password });
       userData.postCurrentUser({ ...user, password: password });
@@ -168,7 +168,7 @@ function SignInSide() {
                 autoComplete="current-password"
               />
 
-              {!location.state.isLogin && (
+              {!location.state?.isLogin && (
                 <TextField
                   margin="normal"
                   required
@@ -187,7 +187,7 @@ function SignInSide() {
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  {location.state.isLogin ? "로그인" : "계정 생성"}
+                  {location.state?.isLogin ? "로그인" : "계정 생성"}
                 </Button>
               )}
 
@@ -244,7 +244,7 @@ function SignInSide() {
                   onClick={onClickSignup}
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  {location.state.isLogin ? "로그인" : "계정 생성"}
+                  {location.state?.isLogin ? "로그인" : "계정 생성"}
                 </Button>
               )}
               <Copyright sx={{ mt: 5 }} />
