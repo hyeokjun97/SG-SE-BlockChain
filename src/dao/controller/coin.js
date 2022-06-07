@@ -6,9 +6,12 @@ import { ABI } from "../helper/web3Helper";
 
 export const getAll = (web3) => {
   //console.log(web3);
-  console.log(userData.getCurrentUser());
-  var userAdrrPK = userData.getCurrentUser()
-
+  //console.log(userData.getCurrentUser());
+  var userAdrrPK = userData.getCurrentUser().data.address;
+  //console.log("THIS IS USER = ", userAdrrPK);
+  //console.log(tokenData.getByUserAddr(userAdrrPK));
+  console.log(tokenData.getByUserAddr(userAdrrPK).data);
+  return tokenData.getByUserAddr(userAdrrPK).data;
 };
 
 export const deploy = (web3, name, symbol, total_supply) => {
@@ -203,14 +206,15 @@ export const deploy = (web3, name, symbol, total_supply) => {
 
 };
 
-export const getBalance = async (web3,address)=>{
-  var contract_address = "0x532eF26fCeDA9D28644db9558D355e2E37509EFE";
+export const getBalance = async (web3,address, contract_address)=>{
+  //var contract_address = "0x532eF26fCeDA9D28644db9558D355e2E37509EFE";
   var contract = new web3.eth.Contract(ABI, contract_address);
   const data = await contract.methods.balanceOf(address).call()
   var decimal = Math.pow(10, 1)
-  var new_data = data / decimal
-  console.log(new_data);
-  return "balance = " + new_data
+  var new_data = parseFloat(data / decimal);
+  //console.log(new_data);
+  //console.log(typeof new_data);
+  return parseFloat(new_data);
   // .then(data => {
   //     var decimal = Math.pow(10, 1)
   //     var new_data = data / decimal
