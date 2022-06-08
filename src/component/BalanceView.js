@@ -45,48 +45,42 @@ export default function BalanceView() {
     const [tokenAmount, setTokenAmount] = React.useState(0)
     
     //User
+    const [userAddress, setUserAddress] = React.useState(null);
+    const [TuserTokenList, setUserTokenList] = React.useState(null);
+
+
+    //setUserAddress()
     let userAddr = userData.getCurrentUser().data.address;
     let userTokenList = QueryCoinAPI.instance.getCoinList();
     //토큰별 현재 잔고
-    const [balance, setBalance] = React.useState();
+    //const [balance, setBalance] = React.useState();
+    const [userBalanceList, setUserBalanceList] = React.useState([]);
 
-    const getBalance =  async (userAddr, contractAddress) => {
-        
-        const res = await QueryCoinAPI.instance.getBalance(userAddr, contractAddress);
-        console.log("HI ", res);
-        setBalance(res);
-      };
+    //Get User Address Function
+    // 유저의 정보를 가져오는 함수를 만든다.
 
-    const getBalancesByToken =  () => {
-        let userBalanceList = [];
-        userTokenList.forEach(item => {
-            userBalanceList.push({
+    const getBalancesByToken = async () => {
+        //User가 아무것도 가지고 있지 않을때 현재 웹이 깨짐
+        let newElement = [];
+        for (let item of userTokenList){
+            let balanceTest = await QueryCoinAPI.instance.getBalance(userAddr, item.cont_addr);
+            newElement.push({
                 token: item.token_name,
                 symbol: item.token_symbol,
-                balance: 32.2,
+                balance: balanceTest
             })
-        });
+            
+        }
 
-        return userBalanceList;
-        // [{
-        //     token: '',
-        //     symbol: 'SYC',
-        //     balance: 1411.1,
-        // }, {
-        //     token: '',
-        //     symbol: 'ETC',
-        //     balance: 411.1,
-        // }, {
-        //     token: '',
-        //     symbol: 'BTC',
-        //     balance: 6111.1,
-        // }];
+        setUserBalanceList(newElement)
+
     }
     
     //Deply
     const getDeploy = () => {
         //name, symbol, mint
         QueryCoinAPI.instance.deployToken(tokenName, tokenSymbol, tokenAmount)
+        //window.location.reload();
     }
     
     //
@@ -100,7 +94,7 @@ export default function BalanceView() {
     }
 
     React.useEffect(() => {
-        getBalance(userAddr, userTokenList[2].cont_addr);
+        getBalancesByToken();
     }, []);
 
     return (
@@ -108,7 +102,7 @@ export default function BalanceView() {
 
                 <Title>토큰별 현재 잔고</Title>
                 {
-                    getBalancesByToken().map(info=>{
+                    userBalanceList.map(info=>{
                         return <>
                         <Typography component="p" variant="h7">
                             {info.token}

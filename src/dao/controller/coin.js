@@ -201,6 +201,7 @@ export const deploy = (web3, name, symbol, total_supply) => {
         token_symbol: symbol, 
         user_addr: userAddress
       })
+      window.location.reload();
     })
   })
 
