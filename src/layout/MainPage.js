@@ -81,7 +81,7 @@ function DashboardContent() {
 
   const [open, setOpen] = React.useState(true);
 
-  const [balance, setBalance] = React.useState();
+  const [balance, setBalance] = React.useState(); // 
   const [users, setUsers] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState({});
 
@@ -89,7 +89,7 @@ function DashboardContent() {
     setOpen(!open);
   };
 
-  const getBalance = async (user_addr) => {
+  const getBalance = async (user_addr) => { //
     const res = await QueryCoinAPI.instance.getBalance(user_addr);
     setBalance(res);
   };
@@ -98,7 +98,7 @@ function DashboardContent() {
     const userRes = userData.getAll();
     const curUserRes = userData.getCurrentUser();
     setUsers(userRes.data);
-    setCurrentUser(curUserRes.data);
+    setCurrentUser(curUserRes.data);//
   };
 
   const onClickAdd = () => {
@@ -113,7 +113,7 @@ function DashboardContent() {
   };
 
   React.useEffect(() => {
-    getBalance("0x307406876e70F5ebcf92f7d4Cb97D1Fb6892EAA5");
+    //getBalance("0x307406876e70F5ebcf92f7d4Cb97D1Fb6892EAA5");//
     getUserInfo();
   }, []);
 
@@ -192,7 +192,7 @@ function DashboardContent() {
                   }}
                 >
                   <BalanceView />
-                  <div>{balance}</div>
+                  <div></div>
                 </Paper>
               </Grid>
               {/* Recent BalanceList */}

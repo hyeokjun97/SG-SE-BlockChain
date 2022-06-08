@@ -7,7 +7,7 @@ import {Box, Button, TextField} from "@mui/material";
 import Modal from '@mui/material/Modal';
 import { web3 } from '../dao/helper/web3Helper';
 import QueryCoinAPI from '../dao/QueryCoinAPI';
-
+import * as userData from "../dao/data/user";
 const style = {
     position: 'absolute',
     top: '50%',
@@ -44,21 +44,43 @@ export default function BalanceView() {
     const [tokenSymbol, setTokenSymbol] = React.useState(null)
     const [tokenAmount, setTokenAmount] = React.useState(0)
     
-    
-    const getBalancesByToken = () => {
-        return [{
-            token: '',
-            symbol: 'SYC',
-            balance: 1411.1,
-        }, {
-            token: '',
-            symbol: 'ETC',
-            balance: 411.1,
-        }, {
-            token: '',
-            symbol: 'BTC',
-            balance: 6111.1,
-        }];
+    //User
+    let userAddr = userData.getCurrentUser().data.address;
+    let userTokenList = QueryCoinAPI.instance.getCoinList();
+    //토큰별 현재 잔고
+    const [balance, setBalance] = React.useState();
+
+    const getBalance =  async (userAddr, contractAddress) => {
+        
+        const res = await QueryCoinAPI.instance.getBalance(userAddr, contractAddress);
+        console.log("HI ", res);
+        setBalance(res);
+      };
+
+    const getBalancesByToken =  () => {
+        let userBalanceList = [];
+        userTokenList.forEach(item => {
+            userBalanceList.push({
+                token: item.token_name,
+                symbol: item.token_symbol,
+                balance: 32.2,
+            })
+        });
+
+        return userBalanceList;
+        // [{
+        //     token: '',
+        //     symbol: 'SYC',
+        //     balance: 1411.1,
+        // }, {
+        //     token: '',
+        //     symbol: 'ETC',
+        //     balance: 411.1,
+        // }, {
+        //     token: '',
+        //     symbol: 'BTC',
+        //     balance: 6111.1,
+        // }];
     }
     
     //Deply
@@ -76,6 +98,11 @@ export default function BalanceView() {
         let tokenAdded = QueryCoinAPI.instance.addCustomToken(customTokenAddress);
         console.log(tokenAdded)
     }
+
+    React.useEffect(() => {
+        getBalance(userAddr, userTokenList[2].cont_addr);
+    }, []);
+
     return (
         <React.Fragment>
 
@@ -84,7 +111,7 @@ export default function BalanceView() {
                     getBalancesByToken().map(info=>{
                         return <>
                         <Typography component="p" variant="h7">
-                            {info.symbol}
+                            {info.token}
                         </Typography>
                             <Typography component="p" variant="h5">
                                 <b>{info.balance}</b> {info.symbol} <hr></hr>

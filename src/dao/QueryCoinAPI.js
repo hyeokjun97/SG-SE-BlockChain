@@ -13,12 +13,14 @@ export default class QueryCoinAPI {
   //
 
   getCoinList() {
-    // TODO: 여기서 모든 코인을 가지고 올 수 있게 만든다.
-    coinController.getAll(web3);
+    // TODO: 여기서 모든 코인을 가지고 올 수 있게 만든다. *유저의 모든 코인을
+    return coinController.getAll(web3);
+    //
   }
 
-  getBalance (address) {
-    return coinController.getBalance(web3,address);
+  getBalance (address, contract_address) {
+ 
+    return coinController.getBalance(web3,address, contract_address);
   }
 
   deployToken(name, symbol, total_supply) {
