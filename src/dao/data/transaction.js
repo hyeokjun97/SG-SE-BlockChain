@@ -5,10 +5,10 @@ const transaction = [{ hash: "", cont_addr: "" }];
 
 // transaction 정보를 추가한다.
 export const add = (item) => {
-  const ret_transaction = Local.set("transaction");
+  const ret_transaction = Local.get("transaction");
   if (ret_transaction) {
     ret_transaction.push(item);
-    console.log(ret_transaction)
+    console.log(ret_transaction);
     Local.set("transaction", ret_transaction);
     return { data: "success", status: true };
   } else {
