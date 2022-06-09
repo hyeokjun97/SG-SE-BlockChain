@@ -14,12 +14,12 @@ export const getAll = (web3) => {
   return tokenData.getByUserAddr(userAdrrPK).data;
 };
 
-export const deploy = (web3, name, symbol, total_supply) => {
+export const deploy = (web3, name, symbol, input_supply) => {
   // console.log(web3)
   let userInfo = userData.getCurrentUser().data;
   let userAddress = userInfo.address;
   let userPK = Buffer.from(userInfo.private_key, "hex");
-
+  let total_supply = input_supply * Math.pow(10, 10);
   let erc20Contract = new web3.eth.Contract([
     {
       inputs: [
