@@ -51,12 +51,14 @@ export const getByContractAddr = (cont_addr) => {
   }
 };
 
-export const getByUserAddr = (user_addr) => {
+export const getByUserContAddr = (user_addr, cont_addr) => {
   const response = Local.get("transaction");
   if (response) {
     return {
       data: response.filter(
-        (trans) => trans.sender == user_addr || trans.receiver == user_addr
+        (trans) =>
+          trans.cont_addr == cont_addr &&
+          (trans.sender == user_addr || trans.receiver == user_addr)
       ),
       status: true,
     };
