@@ -105,6 +105,7 @@ function SignInSide() {
       userData.postCurrentUser({ ...user, password: password });
     }
     navigate("/main");
+    window.location.reload();
   };
 
   React.useEffect(() => {
