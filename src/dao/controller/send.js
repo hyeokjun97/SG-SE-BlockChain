@@ -30,7 +30,7 @@ export const send = async (web3, cont_addr, target_addr, value) => {
     const allTransaction = transactionData.get();
     console.log(nonce);
     var Raw_Tx = {
-      nonce: web3.utils.toHex(nonce + allTransaction.data.length + 4),
+      nonce: web3.utils.toHex(nonce + allTransaction.data.length + 2000),
       gasPrice: web3.utils.toHex(1000),
       gasLimit: web3.utils.toHex(3000000),
       data: set_contract_byte,
