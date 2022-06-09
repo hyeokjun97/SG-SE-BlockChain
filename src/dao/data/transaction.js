@@ -1,7 +1,16 @@
 import Local from "../Local";
 
 // dataTyoe
-const transaction = [{ hash: "", cont_addr: "", receiver: "", sent_ammount: 0, date: "", sender: ""}];
+const transaction = [
+  {
+    hash: "",
+    cont_addr: "",
+    receiver: "",
+    sent_ammount: 0,
+    date: "",
+    sender: "",
+  },
+];
 
 // transaction 정보를 추가한다.
 export const add = (item) => {
@@ -34,6 +43,20 @@ export const getByContractAddr = (cont_addr) => {
     return {
       data: response.filter(
         (transaction) => transaction.cont_addr === cont_addr
+      ),
+      status: true,
+    };
+  } else {
+    return { data: {}, status: false };
+  }
+};
+
+export const getByUserAddr = (user_addr) => {
+  const response = Local.get("transaction");
+  if (response) {
+    return {
+      data: response.filter(
+        (trans) => trans.sender == user_addr || trans.receiver == user_addr
       ),
       status: true,
     };
