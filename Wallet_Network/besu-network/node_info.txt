@@ -1,0 +1,57 @@
+Chian ID: 2022
+init network: besu operator generate-blockchain-config --config-file=genesis.json --to=networkFiles --private-key-file-name=key
+
+Decimal 저장이 10.
+즉, 100을 만들기 위해 
+디플로이에 10^10 + 10^금액
+을 넣어야함.
+ex) 200발행하려면
+200 * 10000000000
+을 입력
+==============================================
+Node1(INIT):
+Address: 0x5FFA863a230A80642e4a31f535606E7a67E4C5fb
+PK: d8ca706459c90dd7400792303bffc76485343d1a34497b8bddf5628387db1500
+URL: besu --data-path=data --genesis-file=../genesis.json --rpc-http-enabled --rpc-http-api=ETH,NET,IBFT --host-allowlist="*" --rpc-http-cors-origins="all"
+Enode: 
+enode://9006c5bf3a7c6dbc930c50f0fc1ca8b6bb5f19664bbd33771337bd96bea748545833ce97f5a99eaef1560e2194257c54882f5a4584395e7e51d4788b078b5783@127.0.0.1:30303
+
+
+Node2:
+Address: 0x051F9e64101B696b4FB13aB4506A5Ce7e9D91866
+PK: 4a7c1fce0cf65c660a26f79f269b2eb6bc658fbbc9fdb535aba316bfcc4bc1dc
+URL: 
+besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://9006c5bf3a7c6dbc930c50f0fc1ca8b6bb5f19664bbd33771337bd96bea748545833ce97f5a99eaef1560e2194257c54882f5a4584395e7e51d4788b078b5783@127.0.0.1:30303 --p2p-port=30304 --rpc-ws-enabled --rpc-ws-api=ETH,NET,IBFT --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-ws-port=8546
+
+
+Node3:
+Address: 0xE0a46A595f250D6bBc1596764c845C394b0b2555
+PK: 99cfc00099cb25eff411f6433e6cab2c2ce0a3a025617258bb3b53ee905d6877
+URL: 
+besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://9006c5bf3a7c6dbc930c50f0fc1ca8b6bb5f19664bbd33771337bd96bea748545833ce97f5a99eaef1560e2194257c54882f5a4584395e7e51d4788b078b5783@127.0.0.1:30303 --p2p-port=30305 --rpc-ws-enabled --rpc-ws-api=ETH,NET,IBFT --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-ws-port=8547
+
+
+Node4:
+Address: 0x6e88E1FC49f7e1cB3D4885143E3f47ACFd6687a2
+PK: 0504e5e77627afa6e5cd1c68ae7a6331e0fe6bb0c710881f7581f62af962103e
+URL: 
+besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://9006c5bf3a7c6dbc930c50f0fc1ca8b6bb5f19664bbd33771337bd96bea748545833ce97f5a99eaef1560e2194257c54882f5a4584395e7e51d4788b078b5783@127.0.0.1:30303 --p2p-port=30306 --rpc-ws-enabled --rpc-ws-api=ETH,NET,IBFT --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-ws-port=8548
+
+Node5:
+Address: 0xC1460c29D4718C3112a1FAf13DaD1B1138651Ef2
+PK: 116e8133467b5e999bf6e86ccf38618bf055f78e0a2daf7faeef84f0fef0bac8
+URL: 
+besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://9006c5bf3a7c6dbc930c50f0fc1ca8b6bb5f19664bbd33771337bd96bea748545833ce97f5a99eaef1560e2194257c54882f5a4584395e7e51d4788b078b5783@127.0.0.1:30303 --p2p-port=30307 --rpc-ws-enabled --rpc-ws-api=ETH,NET,IBFT --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-ws-port=8549
+
+Node6:
+Address: 0x79ca958f94D16BaDEbfe2C3DE3c51eCbB2C5dB94
+PK: 43c140429db3b290ef058aa9bffa29a8f0f0ef92292a2dbd9bac1565f728a264
+URL:
+besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://9006c5bf3a7c6dbc930c50f0fc1ca8b6bb5f19664bbd33771337bd96bea748545833ce97f5a99eaef1560e2194257c54882f5a4584395e7e51d4788b078b5783@127.0.0.1:30303 --p2p-port=30308 --rpc-ws-enabled --rpc-ws-api=ETH,NET,IBFT --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-ws-port=8550
+
+
+Node7:
+Address: 0x02841B235d665E100151b99cDBa31C0E47cA8d60
+PK: ec6e3f39576679226de89624ff58154dcfa69dc0841042c0c8d3cff83432ffc8
+URL: 
+besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://9006c5bf3a7c6dbc930c50f0fc1ca8b6bb5f19664bbd33771337bd96bea748545833ce97f5a99eaef1560e2194257c54882f5a4584395e7e51d4788b078b5783@127.0.0.1:30303 --p2p-port=30309 --rpc-ws-enabled --rpc-ws-api=ETH,NET,IBFT --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-ws-port=8551
