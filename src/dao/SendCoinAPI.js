@@ -17,6 +17,8 @@ export default class SendCoinAPI {
 
   sendCoin(cont_addr, target_addr, value) {
     // alert('API_IN sendCoin');
+    //console.log("Debug/SendAPI Expected Mine", cont_addr);
+    //console.log("Debug/SendApI Expected To", target_addr);
     return sendController.send(web3, cont_addr, target_addr, value);
   }
 }

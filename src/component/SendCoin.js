@@ -28,7 +28,7 @@ export default function SendCoin({ onSend }) {
   const getTokenList = () => {
     const user = userData.getCurrentUser();
     const tokens = tokenData.getByUserAddr(user.data.address);
-    console.log("asdfasdf", tokens);
+    console.log("SendCoint JS Token: ", tokens);
     setTokenList(tokens.data);
   };
 
@@ -38,9 +38,10 @@ export default function SendCoin({ onSend }) {
     await SendCoinAPI.instance.sendCoin(
       token.cont_addr,
       address,
-      parseInt(amount)
+      parseInt(amount) //만약 소수점까지 보내야할때 이부분을 10^-10자리수 까지 보내야함. 나중에 수정 필요
+      //수정 완료. 
     );
-
+    console.log("DEBUG SendCoin:", amount);
     onSend(token, address, amount);
   };
 
