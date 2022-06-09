@@ -1,7 +1,7 @@
 import Local from "../Local";
 
 // dataTyoe
-const transaction = [{ hash: "", cont_addr: "" }];
+const transaction = [{ hash: "", cont_addr: "", receiver: "", sent_ammount: 0, date: "", sender: ""}];
 
 // transaction 정보를 추가한다.
 export const add = (item) => {

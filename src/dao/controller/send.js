@@ -14,7 +14,7 @@ export const send = async (web3, cont_addr, target_addr, value) => {
   //수정 완료.
   //여기서 고치자
   let convertedValue = value * Math.pow(10, 10);
-  console.log("Converted ", convertedValue );
+  //console.log("Converted ", convertedValue );
   var contract = new web3.eth.Contract(ABI, cont_addr);
   var set_contract = contract.methods.transfer(target_addr, convertedValue);
 
@@ -32,7 +32,7 @@ export const send = async (web3, cont_addr, target_addr, value) => {
   }
 
   web3.eth.getTransactionCount(me.data.address, "pending", (err, nonce) => {
-    console.log("MY Address ", me.data.address);
+    //console.log("MY Address ", me.data.address);
     if (err) {
       return;
     }
@@ -56,22 +56,26 @@ export const send = async (web3, cont_addr, target_addr, value) => {
     var Make_Tx = new ethTx(Raw_Tx);
     Make_Tx.sign(Signature);
 
-    console.log("DEBUG Make_Tx Done");
+    //console.log("DEBUG Make_Tx Done");
 
     var Serialized_Tx = Make_Tx.serialize();
     var Raw_Tx_Hex = "0x" + Serialized_Tx.toString("hex");
 
-    console.log("DEBUG Raw_Tx_Hex Done");
+    //console.log("DEBUG Raw_Tx_Hex Done");
 
     web3.eth.sendSignedTransaction(Raw_Tx_Hex).on("receipt", (receipt) => {
       console.log("receipt : ", receipt, cont_addr);
       transactionData.add({
         hash: receipt.transactionHash,
         cont_addr: cont_addr,
+        receiver: target_addr,
+        sent_amount: convertedValue,
+        date: new Date(),
+        sender: me.data.address,
       });
     });
-    console.log("Transaction DATA ", transactionData.getByContractAddr(cont_addr));
+    //console.log("Transaction DATA ", transactionData.getByContractAddr(cont_addr));
     //console.log("EXAMPLE USE OF function");
-    //web3.eth.getTransactionReceipt("0xea3ee564e64bfa450f04ce4832b8927fa07c7e9c84d67b30e843be0696c83b97").then(console.log);
+    web3.eth.getTransaction("0x96efa7a92bee62d0f553f2510f1e5d87c7b206656a98bef8efce5da72665a1e9").then(console.log);
   });
 };
