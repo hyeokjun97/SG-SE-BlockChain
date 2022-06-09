@@ -88,7 +88,7 @@ export default function SendCoin({ onSend }) {
         required
         fullWidth
         name="amount"
-        label={`수량 (Amount/${token.token_symbol})})`}
+        label={`수량 (Amount/${token.token_symbol})`}
         type="number"
         id="amount"
         autoComplete="amount"
