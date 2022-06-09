@@ -76,6 +76,6 @@ export const send = async (web3, cont_addr, target_addr, value) => {
     });
     //console.log("Transaction DATA ", transactionData.getByContractAddr(cont_addr));
     //console.log("EXAMPLE USE OF function");
-    web3.eth.getTransaction("0x96efa7a92bee62d0f553f2510f1e5d87c7b206656a98bef8efce5da72665a1e9").then(console.log);
+    //web3.eth.getTransaction("0x96efa7a92bee62d0f553f2510f1e5d87c7b206656a98bef8efce5da72665a1e9").then(console.log);
   });
 };
