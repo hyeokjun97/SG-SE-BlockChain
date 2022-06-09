@@ -24,8 +24,11 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 
+import * as tokenData from "../dao/data/token";
+import * as userData from "../dao/data/user";
 
 const drawerWidth = 240;
+const user = userData.getCurrentUser();
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -79,7 +82,20 @@ function DashboardContent() {
         setOpen(!open);
     };
 
-    const [token, setToken] = React.useState(null);
+    //const [token, setToken] = React.useState(null);
+    const [token, setToken] = React.useState("syc");
+    
+    const [tokenList, setTokenList] = React.useState([]);
+    const getTokenList = () => {
+
+        const tokens = tokenData.getByUserAddr(user.data.address);
+        console.log("SendCoint JS Token: ", tokens);
+        setTokenList(tokens.data);
+      };
+      
+    React.useEffect(() => {
+        getTokenList();
+    }, []);
 
     return (
         <ThemeProvider theme={mdTheme}>
@@ -169,13 +185,15 @@ function DashboardContent() {
                                         <Select
                                             labelId="demo-simple-select-label"
                                             id="token"
-                                            value={'syc'}
+                                           
                                             label="Token"
                                             onChange={(event)=>{
                                                 setToken(event.target.value);
                                             }}
                                         >
-                                            <MenuItem value={'syc'}>SYC</MenuItem>
+                                            {tokenList.map((e) => {
+                                                return <MenuItem value={e}>{e.token_name}</MenuItem>;
+                                            })}
                                         </Select>
                                     </FormControl>
 

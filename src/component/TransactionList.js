@@ -5,7 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title';
-
+import QueryCoinTransactionAPI from "../dao/QueryCoinTransactionAPI.js";
 
 
 // Generate dumy datas
@@ -43,6 +43,20 @@ const rows = [
 
 
 export default function TransactionList({token}) {
+
+    console.log("Transactions ", token);
+    console.log("DATA: ", rows)
+    let userAddr = token.user_addr;
+    let cont_addr = token.cont_addr;
+    let symbol = token.token_symbol;
+    //console.log("Transactions ID ", userAddr);
+    console.log("Transactions CA", symbol);
+
+    const getTransactionList = async () => {
+    
+    };
+
+
     return (
         <React.Fragment>
             <Title>거래 내역 목록</Title>
@@ -59,7 +73,7 @@ export default function TransactionList({token}) {
                         <TableRow key={row.id}>
                             <TableCell>{row.creationDate.toLocaleString()}</TableCell>
                             <TableCell>{row.address}</TableCell>
-                            <TableCell align="right"><b>{`${row.amount}`}</b> SYMBOL</TableCell>
+                            <TableCell align="right"><b>{`${row.amount}`}</b> {symbol}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
