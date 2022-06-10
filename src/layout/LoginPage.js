@@ -150,7 +150,8 @@ function SignInSide() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              서강 블록체인 지갑 계정 생성
+              서강 블록체인 지갑{" "}
+              {location.state?.isLogin ? "로그인" : "계정 생성"}
             </Typography>
             <Box
               component="form"
