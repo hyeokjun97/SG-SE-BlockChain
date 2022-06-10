@@ -10,8 +10,13 @@ import MainPage from "./layout/MainPage";
 import CoinPage from "./layout/CoinPage";
 import TransactionPage from "./layout/TransactionPage";
 import TokenPage from "./layout/TokenPage";
+import Loader from "./component/Loader";
+
 
 const Root = () => {
+
+  const [isBusy, setIsBusy] = React.useState(false);
+
   const justInit = () => {
     const init = [];
     Local.set("token", init);
@@ -43,17 +48,36 @@ const Root = () => {
     initALlData();
   }, []);
 
+  window.showBusy = function (delay=2000){
+    setIsBusy(true);
+    setTimeout(()=>{
+      setIsBusy(false);
+    }, delay);
+  }
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<EntryPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="main" element={<MainPage />} />
-        <Route path="coin" element={<CoinPage />} />
-        <Route path="transactions" element={<TransactionPage />} />
-        <Route path="token" element={<TokenPage />} />
-      </Routes>
-    </BrowserRouter>
+      <>
+        {
+          isBusy ? <Loader isBusy={isBusy}/>: null
+        }
+        <div style={{
+          transition: "opacity 500ms",
+          opacity: isBusy ? 0 : 1
+        }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<EntryPage />} />
+              <Route path="login" element={<LoginPage />} />
+              <Route path="main" element={<MainPage />} />
+              <Route path="coin" element={<CoinPage />} />
+              <Route path="transactions" element={<TransactionPage />} />
+              <Route path="token" element={<TokenPage />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+
+      </>
+
   );
 };
 

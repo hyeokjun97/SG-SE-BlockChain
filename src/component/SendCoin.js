@@ -56,9 +56,12 @@ export default function SendCoin({ onSend }) {
       token.cont_addr
     );
 
+
+
     if (balance < parseInt(amount)) {
       return alert("가지고 있는 토큰보다 많습니다.");
     }
+    window.showBusy();
 
     const result = await SendCoinAPI.instance.sendCoin(
       token.cont_addr,

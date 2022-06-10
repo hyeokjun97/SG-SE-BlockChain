@@ -1,8 +1,18 @@
 :root {
-    --background: #FFF;
+    /*--background: #FFF;*/
   }
-  
+
+ .loader-parent {
+
+   min-height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+ }
+
   .loader {
+
     --duration: 3s;
     --primary:  rgba(39, 94, 254, 1);
     --primary-light: #2f71ff;
@@ -226,7 +236,7 @@
     -webkit-animation-name: box-scale7;
             animation-name: box-scale7;
   }
-  
+
   @-webkit-keyframes box-move0 {
     12% {
       transform: translate(var(--x), var(--y));
@@ -241,7 +251,7 @@
       transform: translate(0, 188px);
     }
   }
-  
+
   @keyframes box-move0 {
     12% {
       transform: translate(var(--x), var(--y));
@@ -641,9 +651,9 @@
     }
   }
   body {
-    background: var(--background);
+    /*background: var(--background);*/
   }
-  
+
   small {
     display: block;
     position: absolute;
@@ -671,32 +681,16 @@
       transform: translateZ(400px);
     }
   }
-  
+
   html {
-    box-sizing: border-box;
+    /*box-sizing: border-box;*/
     -webkit-font-smoothing: antialiased;
   }
-  
+
   * {
     box-sizing: inherit;
   }
   *:before, *:after {
     box-sizing: inherit;
   }
-  
-  body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  body .dribbble {
-    position: fixed;
-    display: block;
-    right: 24px;
-    bottom: 24px;
-  }
-  body .dribbble img {
-    display: block;
-    width: 76px;
-  }
+

@@ -37,13 +37,13 @@ export default function BalanceView() {
     const [addOpenModal, setAddOpenModal] = React.useState(false);
 
     // 모달에서 새로 추가할 토큰의 정보
-    const [customTokenAddress, setCustomTokenAddress] = React.useState(null) 
+    const [customTokenAddress, setCustomTokenAddress] = React.useState(null)
 
     // 모달에서 새로 발행할 토큰의 정보
     const [tokenName, setTokenName] = React.useState(null)
     const [tokenSymbol, setTokenSymbol] = React.useState(null)
     const [tokenAmount, setTokenAmount] = React.useState(0)
-    
+
     //User
     const [userAddress, setUserAddress] = React.useState(null);
     const [TuserTokenList, setUserTokenList] = React.useState(null);
@@ -69,20 +69,20 @@ export default function BalanceView() {
                 symbol: item.token_symbol,
                 balance: balanceTest
             })
-            
+
         }
 
         setUserBalanceList(newElement)
 
     }
-    
+
     //Deply
     const getDeploy = () => {
         //name, symbol, mint
         QueryCoinAPI.instance.deployToken(tokenName, tokenSymbol, tokenAmount)
         //window.location.reload();
     }
-    
+
     //
     const addCustomTokenAddress = () => {
         //let tokenList = get();
@@ -152,7 +152,7 @@ export default function BalanceView() {
                         setCustomTokenAddress(e.target.value)
                     }}
                 />
-                
+
                 <Button
                     type="submit"
                     fullWidth
@@ -161,6 +161,8 @@ export default function BalanceView() {
                     onClick={()=>{
                         addCustomTokenAddress(customTokenAddress)
                         setAddOpenModal(false)
+
+                        window.showBusy();
                     }}
                 >
                     추가하기
@@ -219,7 +221,8 @@ export default function BalanceView() {
                         sx={{ mt: 3, mb: 2 }}
                         onClick={()=>{
                             getDeploy()
-                            setOpenModal(false)
+                            setOpenModal(false);
+                            window.showBusy();
                         }}
                     >
                         발행하기
@@ -227,7 +230,7 @@ export default function BalanceView() {
 
 
                 </Box>
-            </Modal>    
+            </Modal>
         </React.Fragment>
     );
 }

@@ -19,10 +19,12 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SiteMenu from "./SiteMenu";
 
+import MyComponent from 'react-fullpage-custom-loader'
 import BalanceView from "../component/BalanceView";
 import BalanceList from "../component/BalanceList";
 import Copyright from "../component/Copyright";
 import SendCoin from "../component/SendCoin";
+import Loader from "../component/Loader";
 
 const drawerWidth = 240;
 
