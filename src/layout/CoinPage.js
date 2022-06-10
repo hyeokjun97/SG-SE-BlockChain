@@ -18,9 +18,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SiteMenu from "./SiteMenu";
-import LocalAtmIcon from '@mui/icons-material/LocalAtm';
+import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 
-import MyComponent from 'react-fullpage-custom-loader'
+// import MyComponent from 'react-fullpage-custom-loader'
 import BalanceView from "../component/BalanceView";
 import BalanceList from "../component/BalanceList";
 import Copyright from "../component/Copyright";
@@ -108,8 +108,7 @@ function DashboardContent() {
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 ,
-              fontWeight: 900}}
+              sx={{ flexGrow: 1, fontWeight: 900 }}
             >
               코인 전송
             </Typography>
@@ -124,8 +123,9 @@ function DashboardContent() {
               px: [1],
             }}
           >
-            <h3 style={{textAlign: 'left', marginLeft: 10, width: '100%'}}>
-              <LocalAtmIcon style={{marginBottom: -5}}/> Sogang Wallet</h3>
+            <h3 style={{ textAlign: "left", marginLeft: 10, width: "100%" }}>
+              <LocalAtmIcon style={{ marginBottom: -5 }} /> Sogang Wallet
+            </h3>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>
