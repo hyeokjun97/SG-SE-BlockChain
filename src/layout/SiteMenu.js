@@ -7,12 +7,13 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import LogoutIcon from '@mui/icons-material/Logout';
+import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import {Link} from "react-router-dom";
 
 export default function SiteMenu(){
 
     return <React.Fragment>
-        <Link to={'/main'} >
+        <Link to={'/main'} style={{color: '#000', textDecoration: 'none'}}>
             <ListItemButton>
                 <ListItemIcon>
                     <DashboardIcon/>
@@ -21,16 +22,16 @@ export default function SiteMenu(){
             </ListItemButton>
         </Link>
 
-        <Link to={'/coin'} >
+        <Link to={'/coin'} style={{color: '#000', textDecoration: 'none'}}>
             <ListItemButton>
                 <ListItemIcon>
-                    <ShoppingCartIcon/>
+                    <CurrencyBitcoinIcon/>
                 </ListItemIcon>
                 <ListItemText primary="코인전송"/>
             </ListItemButton>
         </Link>
 
-        <Link to={'/transactions'} >
+        <Link to={'/transactions'} style={{color: '#000', textDecoration: 'none'}}>
             <ListItemButton>
                 <ListItemIcon>
                     <BarChartIcon/>
@@ -49,7 +50,8 @@ export default function SiteMenu(){
         {/*</Link>*/}
 
             <ListItemButton onClick={()=>{
-                alert("로그아웃 진행 -> src/layout/SiteMenu.js 51번줄 수정해주세여");
+                window.showBusy(3000);
+                window.location.href = "/login";
             }}>
                 <ListItemIcon>
                     <LogoutIcon/>

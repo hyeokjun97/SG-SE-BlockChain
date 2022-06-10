@@ -27,6 +27,7 @@ import QueryCoinAPI from "../dao/QueryCoinAPI";
 
 import * as userData from "../dao/data/user";
 import { useNavigate } from "react-router-dom";
+import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 
 const drawerWidth = 240;
 
@@ -81,7 +82,7 @@ function DashboardContent() {
 
   const [open, setOpen] = React.useState(true);
 
-  const [balance, setBalance] = React.useState(); // 
+  const [balance, setBalance] = React.useState(); //
   const [users, setUsers] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState({});
 
@@ -144,12 +145,14 @@ function DashboardContent() {
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 1 ,
+                fontWeight: 900}}
             >
               대시보드
             </Typography>
-            
+
           </Toolbar>
+
         </AppBar>
         <Drawer variant="permanent" open={open}>
           <Toolbar
@@ -160,6 +163,8 @@ function DashboardContent() {
               px: [1],
             }}
           >
+            <h3 style={{textAlign: 'left', marginLeft: 10, width: '100%'}}>
+              <LocalAtmIcon style={{marginBottom: -5}}/> Sogang Wallet</h3>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>

@@ -26,6 +26,7 @@ import FormControl from "@mui/material/FormControl";
 
 import * as tokenData from "../dao/data/token";
 import * as userData from "../dao/data/user";
+import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 
 const drawerWidth = 240;
 const user = userData.getCurrentUser();
@@ -123,7 +124,8 @@ function DashboardContent() {
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 1 ,
+                fontWeight: 900}}
             >
               트랜잭션 조회
             </Typography>
@@ -138,6 +140,8 @@ function DashboardContent() {
               px: [1],
             }}
           >
+            <h3 style={{textAlign: 'left', marginLeft: 10, width: '100%'}}>
+              <LocalAtmIcon style={{marginBottom: -5}}/> Sogang Wallet</h3>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>

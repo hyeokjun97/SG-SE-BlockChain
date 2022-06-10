@@ -120,11 +120,11 @@ export default function BalanceView() {
                         new Date().toLocaleString()
                     }
                 </Typography>
-                <Button onClick={()=>{
+                <Button style={{marginTop: 10}} variant={'outlined'} onClick={()=>{
                     setAddOpenModal(true);
                 }}>토큰 추가</Button>
 
-                <Button onClick={()=>{
+                <Button style={{marginTop: 10}} variant={'contained'} onClick={()=>{
                     setOpenModal(true);
                 }}>토큰 발행</Button>
 
