@@ -59,6 +59,7 @@ export default function BalanceList({
               <TableCell>{`Account ${index + 1}`}</TableCell>
               <TableCell align="right">
                 <Button
+                    variant={'contained'}
                   onClick={() => {
                     onClickChange(row);
                   }}
